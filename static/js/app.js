@@ -29,6 +29,10 @@ function loadCharts(id) {
     // build bubble chart
 
     // build pannel data section
+    var selectedMetaData = data.metadata.filter(obj => obj.id == id);
+    console.log(selectedMetaData);
+    // metadata key
+    // you could do a table, or maybe simpler is just append like "h5"
 
     });
 
