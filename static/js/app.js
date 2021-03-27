@@ -46,8 +46,8 @@ d3.json("samples.json").then((data)=>{
 
     var dropDown = d3.select("#selDataset");
 
-    data.names.forEach((data) => {
-        dropDown.append("option").text(data).property("value",data);
+    data.names.forEach((dataObj) => {
+        dropDown.append("option").text(dataObj).property("value",dataObj);
     })
 
     var id = data.names[0];
