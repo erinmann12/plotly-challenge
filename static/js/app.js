@@ -24,7 +24,40 @@ function loadCharts(id) {
     console.log(otuLabels);
     
     // Build bar chart
-    // do .slice here
+    // Slice the first 10 objects for plotting
+    var slicedIds = otuids.slice(0, 10);
+    var slicedSamples = sampleValues.slice(0,10);
+    console.log(slicedIds);
+    console.log(slicedSamples);
+
+    var trace1 = {
+        x: slicedSamples,
+        y: slicedIds,
+        type: "bar",
+        orientation: "h"
+    };
+
+    //data
+    var data = [trace1];
+
+    //layout 
+    var layout = {
+        title: "Top 10 OTUs Found",
+        yaxis: {
+            title: "OTU ID",
+            type: "category"
+        },
+        margin: {
+          l: 100,
+          r: 100,
+          t: 100,
+          b: 100
+        },
+        barmode: 'stack'
+    };
+
+    // Render the plot to the div tag with id "plot"
+    Plotly.newPlot("bar", data, layout);
 
     // build bubble chart
 
