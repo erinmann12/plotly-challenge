@@ -23,8 +23,7 @@ function loadCharts(id) {
     console.log(sampleValues);
     console.log(otuLabels);
     
-    // Build bar chart
-    // Slice the first 10 objects for plotting
+        // Slice the first 10 objects for plotting
     var slicedIds = otuids.slice(0, 10);
     var slicedSamples = sampleValues.slice(0,10);
     var slicedLabels = otuLabels.slice(0,10);
@@ -40,6 +39,7 @@ function loadCharts(id) {
     console.log(reversedSamples);
     console.log(reversedLabels);
 
+    // Build bar chart
     var trace1 = {
         x: reversedSamples,
         y: reversedIds.map(d => "OTU " + d),
@@ -54,9 +54,6 @@ function loadCharts(id) {
     //layout 
     var layout = {
         title: "Top 10 OTUs Found",
-        xaxis: {
-            title: "Sample Values"
-        },
         yaxis: {
             type: "category"
         },
@@ -73,6 +70,27 @@ function loadCharts(id) {
     Plotly.newPlot("bar", data, layout);
 
     // build bubble chart
+    var trace1 = {
+        x: otuids,
+        y: sampleValues,
+        text: otuLabels,
+        mode: 'markers',
+        marker: {
+          color: otuids,
+          size: sampleValues
+        }
+      };
+      
+      var data = [trace1];
+      
+      var layout = {
+        title: 'Test Subject Data',
+        showlegend: false,
+        height: 800,
+        width: 1200
+      };
+      
+      Plotly.newPlot('bubble', data, layout);
 
     // build pannel data section
     var selectedMetaData = data.metadata.filter(obj => obj.id == id);
