@@ -30,12 +30,20 @@ function loadCharts(id) {
     var slicedLabels = otuLabels.slice(0,10);
     console.log(slicedIds);
     console.log(slicedSamples);
-    console.log(slicedLabels)
+    console.log(slicedLabels);
+
+    //reverse the objects
+    var reversedIds = slicedIds.reverse();
+    var reversedSamples = slicedSamples.reverse();
+    var reversedLabels = slicedLabels.reverse();
+    console.log(reversedIds);
+    console.log(reversedSamples);
+    console.log(reversedLabels);
 
     var trace1 = {
-        x: slicedSamples,
-        y: slicedIds.map(d => "OTU " + d),
-        text: slicedLabels,
+        x: reversedSamples,
+        y: reversedIds.map(d => "OTU " + d),
+        text: reversedLabels,
         type: "bar",
         orientation: "h"
     };
