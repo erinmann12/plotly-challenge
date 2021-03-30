@@ -27,12 +27,15 @@ function loadCharts(id) {
     // Slice the first 10 objects for plotting
     var slicedIds = otuids.slice(0, 10);
     var slicedSamples = sampleValues.slice(0,10);
+    var slicedLabels = otuLabels.slice(0,10);
     console.log(slicedIds);
     console.log(slicedSamples);
+    console.log(slicedLabels)
 
     var trace1 = {
         x: slicedSamples,
-        y: slicedIds,
+        y: slicedIds.map(d => "OTU " + d),
+        text: slicedLabels,
         type: "bar",
         orientation: "h"
     };
@@ -43,8 +46,10 @@ function loadCharts(id) {
     //layout 
     var layout = {
         title: "Top 10 OTUs Found",
+        xaxis: {
+            title: "Sample Values"
+        },
         yaxis: {
-            title: "OTU ID",
             type: "category"
         },
         margin: {
