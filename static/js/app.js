@@ -23,7 +23,7 @@ function loadCharts(id) {
     console.log(sampleValues);
     console.log(otuLabels);
     
-        // Slice the first 10 objects for plotting
+    // Slice the first 10 objects for plotting
     var slicedIds = otuids.slice(0, 10);
     var slicedSamples = sampleValues.slice(0,10);
     var slicedLabels = otuLabels.slice(0,10);
@@ -49,7 +49,7 @@ function loadCharts(id) {
     };
 
     //data
-    var data = [trace1];
+    var barData = [trace1];
 
     //layout 
     var layout = {
@@ -67,7 +67,7 @@ function loadCharts(id) {
     };
 
     // Render the plot to the div tag with id "plot"
-    Plotly.newPlot("bar", data, layout);
+    Plotly.newPlot("bar", barData, layout);
 
     // build bubble chart
     var trace1 = {
@@ -81,7 +81,7 @@ function loadCharts(id) {
         }
       };
       
-      var data = [trace1];
+      var bubbleData = [trace1];
       
       var layout = {
         title: 'Test Subject Data',
@@ -90,14 +90,19 @@ function loadCharts(id) {
         width: 1200
       };
       
-      Plotly.newPlot('bubble', data, layout);
+      Plotly.newPlot('bubble', bubbleData, layout);
 
     // build pannel data section
-    var selectedMetaData = data.metadata.filter(obj => obj.id == id);
+    var selectedMetaData = (data.metadata.filter(obj => obj.id == id))[0];
     console.log(selectedMetaData);
     // metadata key
     // you could do a table, or maybe simpler is just append like "h5"
 
+    // for (var key in selectedMetaData) {
+    //     if (selectedMetaData.hasOwnProperty(key)) {
+    //         console.log(selectedMetaData[0][key]);
+    //     };
+    // }
     });
 
 }
