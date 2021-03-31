@@ -93,24 +93,17 @@ function loadCharts(id) {
       Plotly.newPlot('bubble', bubbleData, layout);
 
       // build pannel data section
-      var selectedMetaData = (data.metadata.filter(obj => obj.id == id));
+      var selectedMetaData = (data.metadata.filter(obj => obj.id == id))[0];
       // console.log(selectedMetaData);
 
-      var panelData = Object.keys(selectedMetaData);
+      var panelData = Object.entries(selectedMetaData);
       console.log(panelData);
       // metadata key
       // you could do a table, or maybe simpler is just append like "h5"
   
       //get reference to panel-body
-      // var panelbody = d3.select(".panel-body");
+      var panelbody = d3.select(".panel-body");
       // // console.log(panelbody);
-
-      // for (var key in selectedMetaData) {
-      //   var panelData = [];
-      //   // console.log(`${key}:${selectedMetaData[key]}`);
-      //   panelData.push(`${key}:${selectedMetaData[key]}`);
-      //   console.log(panelData);
-      // }
 
       // panelArray = panelData.concat();
       // console.log(panelArray);
@@ -118,13 +111,13 @@ function loadCharts(id) {
       //   console.log(panelInfo);
       //   var row = panelbody.append("tr");
       //   console.log(row);
-        // Object.entries(panelInfo).forEach(function([key, value]) {
-        //   console.log(key, value);
-        //   // Append a cell to the row for each value
-        //   // in the weather report object
-        //   var cell = row.append("td");
-        //   cell.text(value);
-        // });
+      //   Object.entries(panelInfo).forEach(function([key, value]) {
+      //     console.log(key, value);
+      //     // Append a cell to the row for each value
+      //     // in the weather report object
+      //     var cell = row.append("td");
+      //     cell.text(value);
+      //   });
       // });
 
       // for (var key in selectedMetaData) {
