@@ -92,6 +92,52 @@ function loadCharts(id) {
       
       Plotly.newPlot('bubble', bubbleData, layout);
 
+      //Bonus: build guage chart
+      //get metadata info
+      var metadata = data.metadata;
+      // console.log(metadata);
+    
+      // retrieve selectedMetaData
+      var selectedMetaData = (data.metadata.filter(obj => obj.id == id))[0];
+      console.log(selectedMetaData.wfreq)
+      
+      var gaugeData = [
+        {
+          type: "indicator",
+          mode: "gauge+number",
+          value: parseFloat(selectedMetaData.wfreq),
+          //values: [0-1, 1-2, 2-3, 3-4, 4-5, 5-6, 6-7, 7-8, 8-9],
+          title: { text: "Scrubs per Week", font: { size: 24 } },
+          gauge: {
+            axis: { range: [null, 9] },
+            // bar: { color: "darkblue" },
+            // bgcolor: "white",
+            // borderwidth: 2,
+            // bordercolor: "gray",
+            steps: [
+              { range: [0, 2], color: "lightyellow" },
+              { range: [2-3] , color: "linen" },
+              {range: [3-4], color: "cornsilk"},
+              {range: [4-5], color: "chartreuse"},
+              {range: [5-6], color: "aquamarine"},
+              {range: [7-9], color: "mediumaquamarine"}
+            ],
+            // threshold: {
+            //   line: { color: "red", width: 4 },
+            //   thickness: 0.75,
+            //   value: 490
+            }
+          }
+        //}
+      ];
+      
+      var gaugeLayout = {
+        width: 600,
+        height: 500,
+        margin: { t: 20, r: 100, l: 100, b: 40 }
+      };
+      
+      Plotly.newPlot('gauge', gaugeData, gaugeLayout);
      
     });
 
