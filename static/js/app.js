@@ -92,47 +92,64 @@ function loadCharts(id) {
       
       Plotly.newPlot('bubble', bubbleData, layout);
 
-      // build pannel data section
-      var selectedMetaData = (data.metadata.filter(obj => obj.id == id))[0];
-      // console.log(selectedMetaData);
-
-      var panelData = Object.entries(selectedMetaData);
-      console.log(panelData);
-      // metadata key
-      // you could do a table, or maybe simpler is just append like "h5"
-  
-      //get reference to panel-body
-      var panelbody = d3.select(".panel-body");
-      // // console.log(panelbody);
-
-      // panelArray = panelData.concat();
-      // console.log(panelArray);
-      // panelData.forEach(function(panelInfo) {
-      //   console.log(panelInfo);
-      //   var row = panelbody.append("tr");
-      //   console.log(row);
-      //   Object.entries(panelInfo).forEach(function([key, value]) {
-      //     console.log(key, value);
-      //     // Append a cell to the row for each value
-      //     // in the weather report object
-      //     var cell = row.append("td");
-      //     cell.text(value);
-      //   });
-      // });
-
-      // for (var key in selectedMetaData) {
-      //     console.log(`${key}:${selectedMetaData[key]}`);
-      //     idData = key;
-      //   };
-      // }
-      // for (var key in selectedMetaData) {
-      //   console.log(`${key}:${selectedMetaData[key]}`);
-      //   var pannelData = d3.selectAll("#sample-metadata").innerText += key;
-      // };
-    
+     
     });
 
 }
+
+ // build pannel data section
+function getPanelData(id) {
+  
+  // make data available in this function
+  d3.json("samples.json").then((data)=>{
+
+    //get metadata info
+    var metadata = data.metadata;
+    // console.log(metadata);
+    
+    // retrieve selectedMetaData
+    var selectedMetaData = (data.metadata.filter(obj => obj.id == id))[0];
+    console.log(selectedMetaData);
+
+  });
+ }
+//  
+//  // console.log(selectedMetaData);
+
+//  var panelData = Object.entries(selectedMetaData);
+//  console.log(panelData);
+//  // metadata key
+//  // you could do a table, or maybe simpler is just append like "h5"
+
+//  //get reference to panel-body
+//  var panelbody = d3.select(".panel-body");
+ // // console.log(panelbody);
+
+ // panelArray = panelData.concat();
+ // console.log(panelArray);
+ // panelData.forEach(function(panelInfo) {
+ //   console.log(panelInfo);
+ //   var row = panelbody.append("tr");
+ //   console.log(row);
+ //   Object.entries(panelInfo).forEach(function([key, value]) {
+ //     console.log(key, value);
+ //     // Append a cell to the row for each value
+ //     // in the weather report object
+ //     var cell = row.append("td");
+ //     cell.text(value);
+ //   });
+ // });
+
+ // for (var key in selectedMetaData) {
+ //     console.log(`${key}:${selectedMetaData[key]}`);
+ //     idData = key;
+ //   };
+ // }
+ // for (var key in selectedMetaData) {
+ //   console.log(`${key}:${selectedMetaData[key]}`);
+ //   var pannelData = d3.selectAll("#sample-metadata").innerText += key;
+ // };
+
 
 // read in JSON as promise
 d3.json("samples.json").then((data)=>{
@@ -147,10 +164,12 @@ d3.json("samples.json").then((data)=>{
     })
 
     var id = data.names[0];
-    loadCharts(id)
+    loadCharts(id);
+    getPanelData(id);
 })
 
 function optionChanged(selectedId){
     // load charts of selected id
     loadCharts(selectedId);
+    getPanelData(id);
 }
