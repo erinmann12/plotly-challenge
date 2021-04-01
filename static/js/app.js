@@ -111,11 +111,6 @@ function getPanelData(id) {
     var selectedMetaData = (data.metadata.filter(obj => obj.id == id))[0];
     console.log(selectedMetaData);
 
-    // //make selectedMetaData an array
-    // var panelData = Object.entries(selectedMetaData);
-    // console.log(panelData);
-
-
     //get reference to sample-metadata 
     var panelbody = d3.select("#sample-metadata");
     
@@ -126,10 +121,15 @@ function getPanelData(id) {
     Object.entries(selectedMetaData)
       .forEach(([key,value]) => panelbody.append("h5").text(`${key}:${selectedMetaData[key]} \n`));
     
+      
+      
   });
- }
+}
 
- 
+function optionChanged(selectedId) {
+  console.log(selectedId);
+  getPanelData(selectedId);
+}
 
 // read in JSON as promise
 d3.json("samples.json").then((data)=>{
@@ -151,5 +151,5 @@ d3.json("samples.json").then((data)=>{
 function optionChanged(selectedId){
     // load charts of selected id
     loadCharts(selectedId);
-    getPanelData(id);
+    getPanelData(selectedId);
 }
