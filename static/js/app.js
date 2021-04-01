@@ -111,6 +111,21 @@ function getPanelData(id) {
     var selectedMetaData = (data.metadata.filter(obj => obj.id == id))[0];
     console.log(selectedMetaData);
 
+    //make selectedMetaData an array
+    var panelData = Object.entries(selectedMetaData);
+    console.log(panelData)
+
+    //get reference to sample-metadata 
+    var panelbody = d3.select("#sample-metadata");
+    
+    //empty info table every time a new id is selected
+    panelbody.html("");
+
+    //retrieve the demographic data for the id selected and append it
+    for (key in panelData) { 
+     console.log(key);
+      //panelbody.append("h5").text(`${key}:${selectedMetaData[key]} \n`);
+    }
   });
  }
 //  
@@ -121,8 +136,7 @@ function getPanelData(id) {
 //  // metadata key
 //  // you could do a table, or maybe simpler is just append like "h5"
 
-//  //get reference to panel-body
-//  var panelbody = d3.select(".panel-body");
+//  
  // // console.log(panelbody);
 
  // panelArray = panelData.concat();
@@ -131,7 +145,7 @@ function getPanelData(id) {
  //   console.log(panelInfo);
  //   var row = panelbody.append("tr");
  //   console.log(row);
- //   Object.entries(panelInfo).forEach(function([key, value]) {
+ //   
  //     console.log(key, value);
  //     // Append a cell to the row for each value
  //     // in the weather report object
