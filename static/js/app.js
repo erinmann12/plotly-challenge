@@ -119,16 +119,9 @@ function getPanelData(id) {
 
     //selected each key,value pair and append to h5 
     Object.entries(selectedMetaData)
-      .forEach(([key,value]) => panelbody.append("h5").text(`${key}:${selectedMetaData[key]} \n`));
+      .forEach(([key,value]) => panelbody.append("h5").text(`${key}: ${selectedMetaData[key]} \n`));
     
-      
-      
   });
-}
-
-function optionChanged(selectedId) {
-  console.log(selectedId);
-  getPanelData(selectedId);
 }
 
 // read in JSON as promise
