@@ -80,9 +80,23 @@ function loadCharts(id) {
     };
     
     Plotly.newPlot('bubble', bubbleData, layout);
+
+    // *************************************
+    //Bonus: build guage chart
+    // ******************************** 
+    //get metadata info
+    var metadata = data.metadata;
+    //console.log(metadata);
+
+    // retrieve selectedMetaData
+    var selectedMetaData = (data.metadata.filter(obj => obj.id == id))[0];
+    console.log(selectedMetaData.wfreq)
+
+    
    
   });
 }
+
 // build pannel data section
 function getPanelData(id) {
 
@@ -94,7 +108,7 @@ d3.json("samples.json").then((data)=>{
   
   // retrieve selectedMetaData
   var selectedMetaData = (data.metadata.filter(obj => obj.id == id))[0];
-  console.log(selectedMetaData);
+  // console.log(selectedMetaData);
   //get reference to sample-metadata 
   var panelbody = d3.select("#sample-metadata");
   
