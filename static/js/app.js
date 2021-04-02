@@ -103,19 +103,14 @@ function loadCharts(id) {
         gauge: {
           axis: { range: [null, 9] },
           steps: [
-            { range: [0, 2], color: "lightyellow" },
-            { range: [2,4] , color: "cornsilk" },
-            {range: [4,6], color: "chartreuse"},
-            {range: [6,8], color: "aquamarine"},
-            {range: [8, 9], color: "mediumaquamarine"}
+            { range: [0, 2], color: "springgreen"},
+            { range: [2, 4], color: "lightgreen"},
+            { range: [4,6] , color: "palegreen"},
+            {range: [6,8], color: "lawngreen"},
+            {range: [8,9], color: "limegreen"}
           ],
-          // threshold: {
-          //   line: { color: "red", width: 4 },
-          //   thickness: 0.75,
-          //   value: 490
           }
         }
-      //}
     ];
     
     var gaugeLayout = {
